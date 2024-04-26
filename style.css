@@ -32,8 +32,8 @@ button:hover {
 }
 
 .time-wrapper {
-  width: 250px;
-  height: 200px;
+  width: auto;
+  height: auto;
   padding: 20px;
   background-color: rgb(6, 32, 28);
   border: 4px ridge white;
@@ -41,4 +41,142 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.clock-animation {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: rgb(169, 210, 179);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 30px 30px 30px -10px rgba(0, 0, 0, 0.15),
+    inset 15px 15px 10px rgba(255, 255, 255, 0.75),
+    -15px -15px 35px rgba(255, 255, 255, 0.55),
+    inset -1px -1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.clock-animation .numbers {
+  position: absolute;
+  inset: 35px;
+  background-color: rgb(12, 59, 52);
+  border-radius: 50%;
+  box-shadow: 5px 5px 15px #152b4a66,
+    inset 5px 5px 5px rgba(255, 255, 255, 0.55),
+    -6px -6px 10px rgba(255, 255, 255, 1);
+}
+
+.clock-animation .numbers span {
+  position: absolute;
+  inset: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.65em;
+  transform: rotate(calc(90deg * var(--i)));
+}
+
+.clock-animation .numbers .twelve {
+  transform: rotate(calc(90deg * 0));
+}
+
+.clock-animation .numbers .three {
+  transform: rotate(calc(90deg * 1));
+}
+
+.clock-animation .numbers .six {
+  transform: rotate(calc(90deg * 2));
+}
+
+.clock-animation .numbers .nine {
+  transform: rotate(calc(90deg * 3));
+}
+
+.clock-animation .numbers span b {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.clock-animation .numbers .twelve b {
+  transform: rotate(calc(-90deg * 0));
+}
+
+.clock-animation .numbers .three b {
+  transform: rotate(calc(-90deg * 1));
+}
+
+.clock-animation .numbers .six b {
+  transform: rotate(calc(-90deg * 2));
+}
+
+.clock-animation .numbers .nine b {
+  transform: rotate(calc(-90deg * 3));
+}
+
+.clock-animation .numbers::before {
+  content: "";
+  position: absolute;
+  inset: 35px;
+  background: linear-gradient(#efc633, #8734b0);
+  border-radius: 50%;
+  animation: animate 2s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.clock-animation .numbers::after {
+  content: "";
+  position: absolute;
+  inset: 39px;
+  background: rgb(12, 59, 52);
+  border-radius: 50%;
+}
+
+.clock-animation .numbers .circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.clock-animation .numbers .circle i {
+  position: absolute;
+  width: 3px;
+  height: 50%;
+  background-color: #fff;
+  transform-origin: bottom;
+  transform: scaleY(0.55);
+}
+
+.clock-animation .numbers .circle#hr i {
+  transform: scaleY(0.3);
+  width: 4px;
+}
+
+.clock-animation .numbers .circle#mn i {
+  transform: scaleY(0.45);
+}
+
+.clock-animation .numbers .circle#sc i {
+  transform: scaleY(0.55);
+  width: 2px;
+  background: #efc633;
+  box-shadow: 0 30px 0 #efc633;
 }
