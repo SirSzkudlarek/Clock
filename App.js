@@ -29,6 +29,7 @@ const SwitchButton = (props) => (
 class Clock extends React.Component {
   state = {
     time: this.getTime(),
+    circels: this.clockAnimation(),
   };
 
   getTime() {
@@ -42,7 +43,21 @@ class Clock extends React.Component {
 
   setTime() {
     const time = this.getTime();
+    const circels = this.clockAnimation();
     this.setState({ time });
+    this.setState({ circels });
+  }
+
+  clockAnimation() {
+    const currentTime = new Date();
+    let hh = currentTime.getHours() * 30;
+    let mm = currentTime.getMinutes() * 6;
+    let ss = currentTime.getSeconds() * 6;
+    return {
+      hr: { transform: `rotateZ(${hh + mm / 12}deg)` },
+      mn: { transform: `rotateZ(${mm}deg)` },
+      sc: { transform: `rotateZ(${ss}deg)` },
+    };
   }
 
   componentDidMount() {
@@ -55,6 +70,7 @@ class Clock extends React.Component {
 
   render() {
     const { hours, minutes, seconds } = this.state.time;
+    const { hr, mn, sc } = this.state.circels;
     return (
       <div class="clock">
         <div class="clock-animation">
@@ -71,13 +87,13 @@ class Clock extends React.Component {
             <span class="nine">
               <b>9</b>
             </span>
-            <div class="circle" id="hr">
+            <div style={hr} class="circle" id="hr">
               <i></i>
             </div>
-            <div class="circle" id="mn">
+            <div style={mn} class="circle" id="mn">
               <i></i>
             </div>
-            <div class="circle" id="sc">
+            <div style={sc} class="circle" id="sc">
               <i></i>
             </div>
           </div>

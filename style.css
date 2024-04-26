@@ -66,6 +66,17 @@ button:hover {
     inset -1px -1px 10px rgba(0, 0, 0, 0.2);
 }
 
+.clock-animation::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #efc633;
+  border-radius: 50%;
+  z-index: 1000;
+  box-shadow: 0 0 0 1px #efc633, 0 0 0 3px #fff, 0 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
 .clock-animation .numbers {
   position: absolute;
   inset: 35px;
